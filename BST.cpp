@@ -1,4 +1,3 @@
-
 #include<iostream>
 #include<vector>
 #include<string>
@@ -122,14 +121,51 @@ using namespace std;
             return  node->data; //LCA point.      
     }
 
-     void solve(){
+    void allNodesInRange_01(Node *node, int a, int b, vector<int> &ans)
+{
+    if (node == nullptr)
+        return;
+
+    allNodesInRange_01(node->left, a, b, ans);
+
+    // //sorted Region.
+    if (node->data >= a && node->data <= b)
+        ans.push_back(node->data);
+
+    allNodesInRange_01(node->right, a, b, ans);
+}
+
+//pre Order
+void allNodesInRange_02(Node *node, int a, int b, vector<int> &ans)
+{
+    if (node == nullptr)
+        return;
+    if (node->data >= a && node->data <= b)
+        ans.push_back(node->data);
+
+    if (b < node->data && a < node->data)
+        allNodesInRange_02(node->left, a, b, ans);
+    else if (a > node->data && b > node->data)
+        allNodesInRange_02(node->right, a, b, ans);
+    else //LCA Region.
+    {
+        allNodesInRange_02(node->left, a, b, ans);
+        allNodesInRange_02(node->right, a, b, ans);
+    }
+}
+
+       void solve(){
         vector<int> arr={10,20,30,40,50,60,70,80,90,100,110,120,130};
         Node* root=ContructBST(arr,0,arr.size()-1);
         Display(root);
-        cout<<LCAofBSTrec(root,30,60)<<endl;
-       cout<< LCAofBST(root,30,60)<<endl;
+    //     cout<<LCAofBSTrec(root,30,60)<<endl;
+    //    cout<< LCAofBST(root,30,60)<<endl;
+    vector<int> ans;
+    allNodesInRange_01(root,20,60,ans);
+    for(int ele: ans)
+    cout<<ele<<" ";
     }
-     int main(){
-solve();
-return 0;
+    int main(){
+     solve();
+     return 0;
     }

@@ -636,6 +636,31 @@ public static void Rightview(Node node){
           DDLprev=node;
            DLL(node.right);
     } 
+
+    public static class allSolution {
+        int height = 0;
+        int size = 0;
+        boolean find = false;
+
+        Node pred = null;
+        Node succ = null;
+        Node prev = null;
+    }
+
+    public static void allSol(Node node, int data, int level, allSolution pair) {
+        if (node == null) return;
+        pair.size++;
+        pair.height = Math.max(pair.height, level);
+        pair.find = pair.find || node.data == data;
+
+        if (node.data == data && pair.pred == null) pair.pred = pair.prev;
+        if (pair.prev != null && pair.prev.data == data && pair.succ == null) pair.succ = node;
+        pair.prev = node;
+
+        allSol(node.left, data, level + 1, pair);
+        allSol(node.right, data, level + 1, pair);
+    }
+
     public static void solve(){
         int[] arr={10,20,40,-1,-1,50,80,-1,-1,90,-1,-1,30,60,100,-1,-1,-1,70,110,-1,-1,120,-1,-1};
         Node root=ContructTree(arr);
