@@ -66,7 +66,7 @@ public class recursion{
         // int[] arr=new int[n];
         // for(int i=0;i<n;i++) arr[i]=scn.nextInt();
 
-        int[] arr={1,2,3,4,5,6,7,8,9,10};
+        //int[] arr={1,2,3,4,5,6,7,8,9,10};
     }
 
 
@@ -226,7 +226,7 @@ public class recursion{
         }
         return count;
     }
-}
+
 
 int[][] dirA = {{0, -1}, {-1, -1}, {-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}};
 String[] dirS = {"L", "N", "U", "E", "R", "S", "D", "W"};
@@ -479,7 +479,6 @@ if (tnq==0)
     return true;
 }
 
-int count = 0;
 boolean res=false;
 for (int r = idx; r < rooms.length*rooms[0].length; r++){
     int x = r / rooms[0].length;
@@ -651,8 +650,8 @@ System.out.println(queensPermutation2D(rooms,tnq,""));
 }
 
 public static void Nqueen(){
-boolean[][] board=new boolean[10][10];
-int tnq=10;
+//boolean[][] board=new boolean[10][10];
+//int tnq=10;
 // System.out.println(Nqueen_01(board,0,tnq,""));
 // System.out.println(Nqueen_02(board,0,tnq,""));
 // System.out.println(Nqueen_03(board,0,tnq,""));

@@ -1,3 +1,4 @@
+package bits;
 public class bits {
     public static void main(String[] args) {
 
@@ -27,7 +28,7 @@ public class bits {
         while(num!=0){
             
             count++;
-            num & = (num-1);//there is a difference of 1 set value by taking &
+            num &= (num-1);//there is a difference of 1 set value by taking &
         }
     }
 
