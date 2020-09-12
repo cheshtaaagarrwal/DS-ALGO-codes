@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <List>
+#include<cmath>
 
 using namespace std;
 
@@ -51,17 +52,8 @@ int fiboDP(int N, vector<int> &dp)
 
 int fibo_btr(int n)
 {
-    int a = 0;
-    int b = 1;
-    int sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        sum = a + b;
-        a = b;
-        b = sum;
-    }
-
-    return a;
+    int fib = round((pow(((1+sqrt(5))/2),n) - pow(((1-sqrt(5))/2),n))/(sqrt(5)));         //Binet's Formula , Time Complexity O(1)
+    return fib;
 }
 
 //MazePathSeries.==============================================
