@@ -4,14 +4,14 @@ public class question {
         int val;
         ListNode next;
 
-        ListNode(int val) {
+        ListNode(final int val) {
             this.val = val;
         }
 
     }
 
     // Leetcode 876: getMid
-    public ListNode getMidNode(ListNode node) {
+    public ListNode getMidNode(final ListNode node) {
         if (node == null || node.next == null)
             return node;
         ListNode slow = node;
@@ -25,14 +25,14 @@ public class question {
     }
 
     // Leetcode 206 : reverseOfLL
-    public ListNode reverseList(ListNode head) {
+    public ListNode reverseList(final ListNode head) {
         if (head == null || head.next == null)
             return head;
 
         ListNode prev = null;
         ListNode curr = head;
         while (curr != null) {
-            ListNode forw = curr.next;
+            final ListNode forw = curr.next;
 
             curr.next = prev;
             prev = curr;
@@ -43,12 +43,12 @@ public class question {
     }
 
     // Class Question: reverse Data.
-    public void reverseListData(ListNode head) {
+    public void reverseListData(final ListNode head) {
         if (head == null || head.next == null)
             return;
 
         ListNode curr = head;
-        ListNode midNode = getMidNode(curr);
+        final ListNode midNode = getMidNode(curr);
 
         ListNode nhead = midNode.next;
         midNode.next = null;
@@ -57,7 +57,7 @@ public class question {
         ListNode curr1 = nhead;
         while (curr != null && curr1 != null) {
 
-            int temp = curr.val;
+            final int temp = curr.val;
             curr.val = curr1.val;
             curr1.val = temp;
 
@@ -69,7 +69,7 @@ public class question {
         midNode.next = nhead;
     }
 
-    public ListNode getMidNode2(ListNode node) {
+    public ListNode getMidNode2(final ListNode node) {
         if (node == null || node.next == null)
             return node;
         ListNode slow = node;
@@ -84,12 +84,12 @@ public class question {
 
     // Leetcode 234: palindrome
 
-    public boolean isPalindrome(ListNode head) {
+    public boolean isPalindrome(final ListNode head) {
         if (head == null || head.next == null)
             return true;
 
         ListNode curr = head;
-        ListNode midNode = getMidNode2(curr);
+        final ListNode midNode = getMidNode2(curr);
 
         ListNode nhead = midNode.next;
         midNode.next = null;
@@ -110,7 +110,7 @@ public class question {
         return true;
     }
 
-    public ListNode removeNthFromEnd(ListNode head, int n) {
+    public ListNode removeNthFromEnd(final ListNode head, int n) {
         if (n == 0 || head == null)
             return head;
         if (n == 1 && head.next == null)
@@ -130,18 +130,18 @@ public class question {
             slow = slow.next;
         }
 
-        ListNode forw = slow.next;
+        final ListNode forw = slow.next;
         slow.next = slow.next.next;
         forw.next = null;
         return head;
     }
 
-    public void reorderList(ListNode head) {
+    public void reorderList(final ListNode head) {
         if (head == null || head.next == null)
             return;
 
         ListNode curr1 = head;
-        ListNode midNode = getMidNode2(curr1);
+        final ListNode midNode = getMidNode2(curr1);
 
         ListNode nhead = midNode.next;
         midNode.next = null;
@@ -149,8 +149,8 @@ public class question {
         nhead = reverseList(nhead);
         ListNode curr2 = nhead;
         while (curr1 != null && curr2 != null) {
-            ListNode forw1 = curr1.next;
-            ListNode forw2 = curr2.next;
+            final ListNode forw1 = curr1.next;
+            final ListNode forw2 = curr2.next;
 
             curr1.next = curr2;
             curr2.next = forw1;
@@ -161,11 +161,11 @@ public class question {
     }
 
     // Leetcode 21: merge Two LL.
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public ListNode mergeTwoLists(final ListNode l1, final ListNode l2) {
         if (l1 == null || l2 == null)
             return l1 == null ? l2 : l1;
 
-        ListNode head = new ListNode(-1);
+        final ListNode head = new ListNode(-1);
         ListNode prev = head;
 
         ListNode curr1 = l1;
@@ -195,12 +195,12 @@ public class question {
     }
 
     // Leetcode 328:
-    public ListNode oddEvenList(ListNode head) {
+    public ListNode oddEvenList(final ListNode head) {
         if (head == null || head.next == null)
             return head;
 
         ListNode curr1 = head;
-        ListNode nhead = head.next;
+        final ListNode nhead = head.next;
         ListNode curr2 = head.next;
 
         while (curr1.next != null && curr2.next != null) {
@@ -216,7 +216,7 @@ public class question {
     }
 
     // leetcode 141:
-    public boolean hasCycle(ListNode head) {
+    public boolean hasCycle(final ListNode head) {
         if (head == null || head.next == null)
             return false;
 
@@ -234,7 +234,7 @@ public class question {
     }
 
     // Leetcode 142: detectCyclePoint
-    public ListNode detectCycle(ListNode head) {
+    public ListNode detectCycle(final ListNode head) {
         if (head == null || head.next == null)
             return head;
 
@@ -261,7 +261,7 @@ public class question {
     }
 
     // Leetcode 160
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    public ListNode getIntersectionNode(final ListNode headA, final ListNode headB) {
         if (headB == null || headA == null)
             return null;
         if (headA.next == null && headB.next == null)
@@ -276,31 +276,31 @@ public class question {
         }
 
         curr.next = headA;
-        ListNode rv = detectCycle(headB);
+        final ListNode rv = detectCycle(headB);
         curr.next = null;
 
         return rv;
 
     }
 
-    public ListNode sortList(ListNode head) {
+    public ListNode sortList(final ListNode head) {
         if (head == null || head.next == null)
             return head;
 
-        ListNode mid = getMidNode2(head);
-        ListNode nhead = mid.next;
+        final ListNode mid = getMidNode2(head);
+        final ListNode nhead = mid.next;
         mid.next = null;
 
         return mergeTwoLists(sortList(head), sortList(nhead));
 
     }
 
-    public ListNode mergeKLists(ListNode[] lists, int si, int ei) {
+    public ListNode mergeKLists(final ListNode[] lists, final int si, final int ei) {
         if (si == ei)
             return lists[si];
         if (si + 1 == ei)
             return mergeTwoLists(lists[si], lists[si + 1]);
-        int mid = (si + ei) / 2;
+        final int mid = (si + ei) / 2;
         return mergeTwoLists(mergeKLists(lists, si, mid), mergeKLists(lists, mid + 1, ei));
     }
 
@@ -310,7 +310,7 @@ public class question {
 ListNode th = null;
 ListNode tt = null;
 
-public void addFirstNode(ListNode node) {
+public void addFirstNode(final ListNode node) {
     if (th == null) {
         th = node;
         tt = node;
@@ -320,7 +320,7 @@ public void addFirstNode(ListNode node) {
     }
 }
 
-public ListNode reverseBetween(ListNode node, int m, int n) {
+public ListNode reverseBetween(final ListNode node, final int m, final int n) {
     if (node.next == null || m == n)
         return node;
 
@@ -332,7 +332,7 @@ public ListNode reverseBetween(ListNode node, int m, int n) {
 
     while (curr != null) {
         while (idx >= m && idx <= n) {
-            ListNode forw = curr.next;
+            final ListNode forw = curr.next;
             curr.next = null;
             addFirstNode(curr);
             
@@ -366,7 +366,7 @@ ListNode oh = null;
     ListNode th = null;
     ListNode tt = null;
 
-    public void addFirstNode(ListNode node) {
+    public void addFirstNode(final ListNode node) {
         if (th == null) {
             th = node;
             tt = node;
@@ -385,7 +385,7 @@ ListNode oh = null;
         return l;
     }
 
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public ListNode reverseKGroup(final ListNode head, final int k) {
         if (head == null || head.next == null || k == 0 || k == 1)
             return head;
 
@@ -398,7 +398,7 @@ ListNode oh = null;
             int tk = k;
 
             while (tk-- > 0) {
-                ListNode forw = curr.next;
+                final ListNode forw = curr.next;
 
                 curr.next = null;
                 addFirstNode(curr);
@@ -428,7 +428,7 @@ ListNode oh = null;
         return oh;
     }
 
-    public ListNode reverseKGroup_02(ListNode head, int k) {
+    public ListNode reverseKGroup_02(ListNode head, final int k) {
         if (head == null || head.next == null)
             return head;
 
@@ -451,7 +451,7 @@ ListNode oh = null;
                         ttail = head;
                     }
 
-                    ListNode forw = head.next;
+                    final ListNode forw = head.next;
         
                     head.next = rev;
                     

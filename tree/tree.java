@@ -204,7 +204,6 @@ public class tree {
     public static void allNodeKAway(Node root, int target, int K) {
         ArrayList<Node> path = new ArrayList<>();
         roottoNodepath(root, target, path);
-
         Node blockNode = null;
         for (int i = 0; i < path.size(); i++) {
             if (K - i < 0)
